@@ -167,14 +167,4 @@ lexer.input('''+-\n\*notnome_jogador=>
             ''')
 
 for tok in lexer:
-  print(f'Chave:{tok.type}\t\t Valor:{tok.value}\t\t Linha:{tok.lineno}\t\t Posicao:{tok.lexpos}') 
-
-
-
-'''Perguntas para o professor
--Quando usar método e quando usar token?
--Quando identificar o retorno, como exemplo na função NUMBER e t_newline
--Como colocar espaços em branco depois das palavras reservadas
-EX: returntrue <- deveria ser inválido
-    return true <- deveria ser válido
-'''
+  print(f'Chave:{tok.type}\t\t Valor:{tok.value}\t\t Linha:{tok.lineno}\t\t Posicao:{tok.lexpos}')
