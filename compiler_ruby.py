@@ -1,6 +1,12 @@
 import ply.lex as lex # importando a biblioteca ply para o léxico
 #Definindo Tokens e seus ptadroes
-tokens = ['PLUS', 'MINUS', 'TIMES', 'DIV', 'NOT', 'AND', 'BEGIN', 'DEF', 'ELSE', 'END', 'IF', 'RETURN', 'TRUE', 'BIGGEST', 'EQ', 'DIFF', 'BREAK', 'ELSIF', 'FALSE','IN', 'NIL', 'OR', 'THEN', 'WHILE','SMALL','DOUBLEEQUAL', 'NUMBER', 'NAME', 'COMMENT', 'ID', 'CLASS', 'FOR', 'MODULE', 'SELF', 'SUPER', 'EXPO', 'REST', 'TRIPLEEQ', 'SMALLEQ', 'BIGGESTEQ', 'POINTRANGE', 'DOUBLEBAR', 'DOUBLEE','EXCLAMATION','SIMPLEBAR', 'SIMPLEE', 'CIRCUMFLEX', 'NEGATION', 'ID_GLOBAL','ID_INSTANCE','ID_CLASS', 'OPENKEY', 'CLOSEKEY', 'COMMENTMULTI', 'STRING']
+
+tokens = ['PLUS', 'MINUS', 'TIMES', 'DIV', 'NOT', 'AND', 'BEGIN', 'DEF', 'ELSE', 'END', 'IF', 
+'RETURN', 'TRUE', 'BIGGEST', 'EQ', 'DIFF', 'BREAK', 'ELSIF', 'FALSE','IN', 'NIL', 'OR', 'THEN', 
+'WHILE','SMALL','DOUBLEEQUAL', 'NUMBER', 'NAME', 'COMMENT', 'ID', 'CLASS', 'FOR', 'MODULE', 'SELF', 
+'SUPER', 'EXPO', 'REST', 'TRIPLEEQ', 'SMALLEQ', 'BIGGESTEQ', 'POINTRANGE', 'DOUBLEBAR', 'DOUBLEE',
+'EXCLAMATION','SIMPLEBAR', 'SIMPLEE', 'CIRCUMFLEX', 'NEGATION', 'ID_GLOBAL','ID_INSTANCE',
+'ID_CLASS', 'OPENKEY', 'CLOSEKEY', 'COMMENTMULTI', 'STRING']
 
 
 
@@ -11,11 +17,7 @@ t_TIMES  = r'\*'
 t_DIV  = r'\\'
 t_EXPO = r'\*\*'
 t_REST = r'\%'
-
 t_ignore = ' \t'
-#t_NAME = r'[a-zA-Z_][\ a-zA-Z0-9_]*'  #que é isso?
-#t_COMMENT = r'\#.*' 
-
 t_AND = r'and'
 t_BREAK = r'break'
 t_ELSIF = r'elsif'
@@ -69,15 +71,10 @@ t_DIFF = r' != '
 
 def t_COMMENTMULTI(t):
   r'\=begin(.*)\n(.|\n)*?\=end' 
-  #r'\=begin(.*)\n(.|\n)*?\=end' 
-  #print(t.value)
-  return t
 
 
 def t_STRING(t):
-   #r'\(\".*\"\)|\(\'.*\'\)'
-   r'\".*\"|\'.*\''
-   #r'(\".*\")|(\'.*\')'
+   r'\".*?\"|\'.*?\''
    return t
 
 
@@ -101,8 +98,7 @@ def t_NUMBER(t):
 
 def t_COMMENT(t):
   r'\#.*' 
-  #print(t.value)
-  #pass
+  
 
 def t_ID_GLOBAL(t):
   r'\$[a-zA-Z_][a-zA-Z_0-9]*'
@@ -146,8 +142,7 @@ lexer.input('''+-\n\*notnome_jogador=>
            
             #testandocomentario
             menino ney
-            "teste de string"
-            "teste aspas'
+            "teste de string""teste aspas"
             'bacco'
             ***
             #
