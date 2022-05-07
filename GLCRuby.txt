@@ -1,0 +1,95 @@
+|
+#GLC da Linguagem de Programação SUE (Somente um Exemplo)
+# Terminais são representados pelos elementos cuja grafia está em maiúsculo, bem como 
+# pelos símbolos que estão entre aspas duplas (")
+
+'''
+Declaracao de programa
+program
+'''
+
+program → funcdecl | 
+          funcdecl program |
+          class |
+          class program |
+          stm | 
+          stm program |
+  
+
+
+'''
+Declaracao de função
+funcdecl
+'''
+
+funcdecl -> signature body
+
+
+signature -> "def" ID "(" sigParams ")" | 
+             "def" ID  "(" ")" |
+             "def" ID
+
+
+sigParams -> ID | 
+             ID "," sigParams
+
+
+body -> stms "end"
+
+
+stms → stm  | 
+       stm  stms
+
+
+stm → exp | 
+      exp ";"|
+      WHILE exp body |
+      FOR ID "in" exp "do" body |
+      IF exp body |
+      return exp | 
+      return exp ";" | 
+
+
+exp → exp "+" exp | #Oper aritiméticos
+      exp "-" exp |
+      exp "*" exp | 
+      exp "**" exp| 
+      exp "/" exp |
+      exp "%" exp |
+
+#Oper relacional
+      exp "==" exp | 
+      exp "===" exp|
+      exp "!=" exp |
+      exp ">" exp  |
+      exp "<" exp  |
+      exp "<=" exp |
+      exp ">=" exp |
+      exp "<==>" exp |
+      exp ".." exp |
+
+#Oper lógico
+      exp "||" exp |
+      exp "&&" exp |
+      exp "!"  exp |
+
+#Oper bit a bit
+      exp "|"  exp |
+      exp "&"  exp |
+      exp "^"  exp |
+      exp "~"  exp |
+      exp "<<"  exp |
+      exp ">>"  exp |
+
+      call | 
+      assign | 
+      NUM |
+      ID
+
+call → ID "(" params ")" |
+       ID "(" ")"
+
+params →  exp "," params | 
+          exp
+
+assign → ID "=" exp
