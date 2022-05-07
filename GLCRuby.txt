@@ -8,13 +8,20 @@ Declaracao de programa
 program
 '''
 
-program → funcdecl | 
+program -> funcdecl | 
           funcdecl program |
           class |
           class program |
-          stm | 
-          stm program |
-  
+          stms | 
+          stms program |
+
+'''
+Declaracao de classes
+class
+'''
+
+class -> "class" ID funcdecl body |
+         "class" ID  stms  body | 
 
 
 '''
@@ -25,9 +32,13 @@ funcdecl
 funcdecl -> signature body
 
 
+class -> 
+
+
 signature -> "def" ID "(" sigParams ")" | 
              "def" ID  "(" ")" |
-             "def" ID
+             "def" ID |
+             "def" ID sigParams
 
 
 sigParams -> ID | 
@@ -37,20 +48,25 @@ sigParams -> ID |
 body -> stms "end"
 
 
-stms → stm  | 
+stms -> stm  | 
        stm  stms
 
 
-stm → exp | 
+stm -> exp | 
       exp ";"|
       WHILE exp body |
+      WHILE "(" exp ")" body |
       FOR ID "in" exp "do" body |
+      FOR ID "in" exp body |
       IF exp body |
+      IF exp "then" body |
+      IF "(" exp ")" body |
+      IF "(" exp ")" "then" body |
       return exp | 
       return exp ";" | 
 
 
-exp → exp "+" exp | #Oper aritiméticos
+exp -> exp "+" exp | #Oper aritiméticos
       exp "-" exp |
       exp "*" exp | 
       exp "**" exp| 
@@ -86,10 +102,10 @@ exp → exp "+" exp | #Oper aritiméticos
       NUM |
       ID
 
-call → ID "(" params ")" |
+call -> ID "(" params ")" |
        ID "(" ")"
 
-params →  exp "," params | 
+params ->  exp "," params | 
           exp
 
-assign → ID "=" exp
+assign -> ID "=" exp

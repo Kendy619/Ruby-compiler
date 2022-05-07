@@ -10,6 +10,24 @@ signature -> "def" ID "(" sigParams ")" |
               "def" ID
 '''
 
+'''
+
+class -> "class" ID funcdecl body |
+         "class" ID  stms  body | 
+
+'''
+
+def p_class_1(p): 
+  '''class : CLASS ID funcdecl body
+  '''
+  p[0] = sa.FuncDeclConcrete(p[1], p[2], p[3], p[4])
+
+def p_class_2(p): 
+  '''class : CLASS ID stms body
+  '''
+  p[0] = sa.FuncDeclConcrete(p[1], p[2], p[3], p[4])
+
+
 def p_program(p):
   '''program : funcdecl
              | funcdecl program
