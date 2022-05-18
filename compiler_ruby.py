@@ -6,9 +6,10 @@ tokens = ['PLUS', 'MINUS', 'TIMES', 'DIV', 'NOT', 'AND', 'BEGIN', 'DEF', 'ELSE',
 'WHILE','SMALL','DOUBLEEQUAL', 'NUMBER', 'NAME', 'COMMENT', 'ID', 'CLASS', 'FOR', 'MODULE', 'SELF', 
 'SUPER', 'EXPO', 'REST', 'TRIPLEEQ', 'SMALLEQ', 'BIGGESTEQ', 'POINTRANGE', 'DOUBLEBAR', 'DOUBLEE',
 'EXCLAMATION','SIMPLEBAR', 'SIMPLEE', 'CIRCUMFLEX', 'NEGATION', 'ID_GLOBAL','ID_INSTANCE',
-'ID_CLASS', 'OPENKEY', 'CLOSEKEY', 'COMMENTMULTI', 'STRING', 'LPAREN', 'RPAREN']
+'ID_CLASS', 'OPENKEY', 'CLOSEKEY', 'COMMENTMULTI', 'STRING', 'LPAREN', 'RPAREN','DO', 'BIGGSMALLEQ','LSHIFT', 'RSHIFT', 'PONTOVIRGULA', 'BARN','VIRGULA']
 #ADCIONEI LPAREN E RPAREN ASS: THIAGO
-
+#adicionei DO, BIGGSMALLEQ, LSHIFT, RSHIFT
+#ADD quebra de linha "BARN", "VIRGULA"
 
 
 t_PLUS    = r'\+'
@@ -26,16 +27,19 @@ t_IN = r'in'
 t_NIL = r'nil'
 t_OR = r'or'
 t_THEN = r'then'
+t_DO = r'do'
 t_WHILE = r'while'
 t_FOR = r'for'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_OPENKEY = r'\{'
 t_CLOSEKEY = r'\}'
-
+t_PONTOVIRGULA = r'\;'
+t_VIRGULA = r'\,'
 
 t_SMALLEQ = r'<\='
 t_BIGGESTEQ = r'>\='
+t_BIGGSMALLEQ = r'<\=>'
 
 t_SIMPLEBAR = r'\|'
 t_SIMPLEE = r'&'
@@ -44,11 +48,12 @@ t_NEGATION = r'~'
 t_DOUBLEBAR = r'\|\|'
 t_DOUBLEE = r'\&\&'
 t_EXCLAMATION = r'\!'
-
+t_LSFHIT = r'<<'
+t_RSHIFT = r'>>'
 
 t_SMALL = r'<'
 t_TRIPLEEQ = r'\=\=\='
-t_DOUBLEEQUAL = r' == '
+t_DOUBLEEQUAL = r'\=\= '
 t_POINTRANGE = r'\.\.'
 
 t_BEGIN = r'begin '
@@ -69,6 +74,10 @@ t_DIFF = r' != '
 
 
 #Criando analisador Lexico e realizando analise lexica
+
+def t_BARN(t):
+    r'(.|\s)*'
+
 
 def t_COMMENTMULTI(t):
   r'\=begin(.*)\n(.|\n)*?\=end' 
@@ -147,17 +156,21 @@ lexer.input('''+-\n\*notnome_jogador=>
             'bacco'
             ***
             #
+            ;
             #sada
             adfd
             =begin defrefgrtgtrgegergerfgerf
             frgtgtrgr
             =end
-          sada
+          sada;
+            ;
+            
 
             =begin asgasd =end
             =end
             ""
-            ("#aseef",dedefr,121,"sdefdref")
+           ==
+           === ("#aseef",dedefr,121,"sdefdref")
             ("swdefr")
             
             ''')

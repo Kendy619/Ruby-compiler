@@ -12,27 +12,31 @@ program -> funcdecl |
           funcdecl program |
           class |
           class program |
-          stms | 
-          stms program |
+          stm | 
+          stm program |
 
 '''
+
 Declaracao de classes
 class
 '''
 
-class -> "class" ID funcdecl body |
-         "class" ID  stms  body | 
+class -> "class" ID funcdecl bodyclass |
+         "class" ID  stms  bodyclass | 
 
 
 '''
+
+
+bodyclass ->      'Nesse caso, teria que ver a questão do end, não é?'
+
+
+
 Declaracao de função
 funcdecl
 '''
 
 funcdecl -> signature body
-
-
-class -> 
 
 
 signature -> "def" ID "(" sigParams ")" | 
@@ -53,6 +57,7 @@ stms -> stm  |
 
 
 stm -> exp | 
+      (exp)|
       exp ";"|
       WHILE exp body |
       WHILE "(" exp ")" body |
@@ -66,7 +71,8 @@ stm -> exp |
       return exp ";" | 
 
 
-exp -> exp "+" exp | #Oper aritiméticos
+exp -> string |
+      exp "+" exp | #Oper aritiméticos
       exp "-" exp |
       exp "*" exp | 
       exp "**" exp| 
@@ -81,7 +87,7 @@ exp -> exp "+" exp | #Oper aritiméticos
       exp "<" exp  |
       exp "<=" exp |
       exp ">=" exp |
-      exp "<==>" exp |
+      exp "<=>" exp |
       exp ".." exp |
 
 #Oper lógico
