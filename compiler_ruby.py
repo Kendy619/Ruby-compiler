@@ -6,10 +6,10 @@ tokens = ['PLUS', 'MINUS', 'TIMES', 'DIV', 'NOT', 'AND', 'BEGIN', 'DEF', 'ELSE',
 'WHILE','SMALL','DOUBLEEQUAL', 'NUMBER', 'NAME', 'COMMENT', 'ID', 'CLASS', 'FOR', 'MODULE', 'SELF', 
 'SUPER', 'EXPO', 'REST', 'TRIPLEEQ', 'SMALLEQ', 'BIGGESTEQ', 'POINTRANGE', 'DOUBLEBAR', 'DOUBLEE',
 'EXCLAMATION','SIMPLEBAR', 'SIMPLEE', 'CIRCUMFLEX', 'NEGATION', 'ID_GLOBAL','ID_INSTANCE',
-'ID_CLASS', 'OPENKEY', 'CLOSEKEY', 'COMMENTMULTI', 'STRING', 'LPAREN', 'RPAREN','DO', 'BIGGSMALLEQ','LSHIFT', 'RSHIFT', 'PONTOVIRGULA', 'BARN','VIRGULA']
+'ID_CLASS', 'OPENKEY', 'CLOSEKEY', 'COMMENTMULTI', 'STRING', 'LPAREN', 'RPAREN','DO', 'BIGGSMALLEQ','LSHIFT', 'RSHIFT', 'PONTOVIRGULA','VIRGULA']
 #ADCIONEI LPAREN E RPAREN ASS: THIAGO
 #adicionei DO, BIGGSMALLEQ, LSHIFT, RSHIFT
-#ADD quebra de linha "BARN", "VIRGULA"
+#ADD quebra de linha >>"BARN"<<, "VIRGULA"
 
 
 t_PLUS    = r'\+'
@@ -48,7 +48,7 @@ t_NEGATION = r'~'
 t_DOUBLEBAR = r'\|\|'
 t_DOUBLEE = r'\&\&'
 t_EXCLAMATION = r'\!'
-t_LSFHIT = r'<<'
+t_LSHIFT = r'<<'
 t_RSHIFT = r'>>'
 
 t_SMALL = r'<'
@@ -75,8 +75,8 @@ t_DIFF = r' != '
 
 #Criando analisador Lexico e realizando analise lexica
 
-def t_BARN(t):
-    r'(.|\s)*'
+#def t_BARN(t):
+#    r'(.|\s)*'
 
 
 def t_COMMENTMULTI(t):
@@ -172,7 +172,6 @@ lexer.input('''+-\n\*notnome_jogador=>
            ==
            === ("#aseef",dedefr,121,"sdefdref")
             ("swdefr")
-            
             ''')
 
 for tok in lexer:
