@@ -82,7 +82,7 @@ puts(printar("É melhor", "É melhosr"))
 ```
 # 4. Classes
 ```ruby
-class Cachorro #o nome da classe deve começar com letra maiúscula
+class Cachorro #o nome da classe deve iniciar com letra maiúscula
 
  def falar
   puts "Latir!"
