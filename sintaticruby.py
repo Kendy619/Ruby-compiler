@@ -81,7 +81,7 @@ def p_objdecl_1(p):
   '''
   p[0] = sa.ObjdeclConcrete(p[1], p[2], p[3], p[4], p[5],p[6])
 
-def p_callob_1(p):
+def p_callobj_1(p):
   '''callobj : ID PONTO ID'''
     p[0] = sa.CallobjConcrete(p[1], p[2], p[3])
 
