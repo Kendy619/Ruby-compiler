@@ -6,10 +6,11 @@ tokens = ['PLUS', 'MINUS', 'TIMES', 'DIV', 'NOT', 'AND', 'BEGIN', 'DEF', 'ELSE',
 'WHILE','SMALL','DOUBLEEQUAL', 'NUMBER', 'NAME', 'COMMENT', 'ID', 'CLASS', 'FOR', 'MODULE', 'SELF', 
 'SUPER', 'EXPO', 'REST', 'TRIPLEEQ', 'SMALLEQ', 'BIGGESTEQ', 'POINTRANGE', 'DOUBLEBAR', 'DOUBLEE',
 'EXCLAMATION','SIMPLEBAR', 'SIMPLEE', 'CIRCUMFLEX', 'NEGATION', 'ID_GLOBAL','ID_INSTANCE',
-'ID_CLASS', 'OPENKEY', 'CLOSEKEY', 'COMMENTMULTI', 'STRING', 'LPAREN', 'RPAREN','DO', 'BIGGSMALLEQ','LSHIFT', 'RSHIFT', 'PONTOVIRGULA','VIRGULA']
+'ID_CLASS', 'OPENKEY', 'CLOSEKEY', 'COMMENTMULTI', 'STRING', 'LPAREN', 'RPAREN','DO', 'BIGGSMALLEQ','LSHIFT', 'RSHIFT', 'PONTOVIRGULA','BARN','VIRGULA','NEW','PONTO']
 #ADCIONEI LPAREN E RPAREN ASS: THIAGO
 #adicionei DO, BIGGSMALLEQ, LSHIFT, RSHIFT
-#ADD quebra de linha >>"BARN"<<, "VIRGULA"
+#ADD quebra de linha "BARN", "VIRGULA"
+#ADD NEW para objetos 
 
 
 t_PLUS    = r'\+'
@@ -55,9 +56,11 @@ t_SMALL = r'<'
 t_TRIPLEEQ = r'\=\=\='
 t_DOUBLEEQUAL = r'\=\= '
 t_POINTRANGE = r'\.\.'
+t_PONTO = r'\.'
 
 t_BEGIN = r'begin '
 t_DEF = r'def '
+t_NEW = r'new '
 t_ELSE = r'else '
 t_END = r'end '
 t_CLASS = r'class'
@@ -75,9 +78,8 @@ t_DIFF = r' != '
 
 #Criando analisador Lexico e realizando analise lexica
 
-#def t_BARN(t):
-#    r'(.|\s)*'
-
+def t_BARN(t):
+    r'\n\s*'  
 
 def t_COMMENTMULTI(t):
   r'\=begin(.*)\n(.|\n)*?\=end' 

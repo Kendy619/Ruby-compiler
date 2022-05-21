@@ -28,8 +28,20 @@ class -> "class" ID funcdecl bodyclass |
 '''
 
 
-bodyclass ->      'Nesse caso, teria que ver a questão do end, não é?'
+bodyclass ->  funcdecl "end"
+             | attrdecl "end"
+             | funcdecl bodyclass "end"
+             | attrdecl bodyclass "end"
 
+
+''' g = Anfitriao.new("João") '''
+
+attdecl ->  ID "=" objdecl
+            | callobj
+  
+objdecl -> ID "." "new" "("ID")"
+
+callobj -> ID "." ID
 
 
 Declaracao de função

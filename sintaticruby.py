@@ -45,7 +45,45 @@ def p_class_2(p):
   '''
   p[0] = sa.ClassConcrete(p[1], p[2], p[3], p[4])
 
+def p_bodyclass_1(p): 
+  '''bodyclass : funcdecl END
+  '''
+  p[0] = sa.BodyclassConcrete(p[1],p[2])
 
+def p_bodyclass_2(p): 
+  '''bodyclass : attrdecl END
+  '''
+  p[0] = sa.BodyclassConcrete(p[1],p[2])
+
+def p_bodyclass_3(p): 
+  '''bodyclass : funcdecl bodyclass END
+  '''
+  p[0] = sa.BodyclassConcrete(p[1], p[2],p[3])
+
+def p_bodyclass_4(p): 
+  '''bodyclass : attrdecl bodyclass END
+  '''
+  p[0] = sa.BodyclassConcrete(p[1], p[2],p[3])
+
+
+def p_attdecl_1(p):
+  '''attdecl : ID EQ objdecl
+  '''
+  p[0] = sa.AttdeclConcrete(p[1], p[2],p[3])
+
+def p_attdecl_2(p):
+  '''attdecl : callobj
+  '''
+  p[0] = sa.AttdeclConcrete(p[1])
+
+def p_objdecl_1(p):
+  '''objdecl : ID PONTO NEW LPAREN ID RPAREN
+  '''
+  p[0] = sa.ObjdeclConcrete(p[1], p[2], p[3], p[4], p[5],p[6])
+
+def p_callob_1(p):
+  '''callobj : ID PONTO ID'''
+    p[0] = sa.CallobjConcrete(p[1], p[2], p[3])
 
 
 def p_funcdecl(p):
