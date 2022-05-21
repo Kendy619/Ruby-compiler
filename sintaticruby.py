@@ -65,7 +65,6 @@ def p_bodyclass_4(p):
   '''
   p[0] = sa.BodyclassConcrete(p[1], p[2],p[3])
 
-
 def p_attdecl_1(p):
   '''attdecl : ID EQ objdecl
   '''
@@ -82,8 +81,9 @@ def p_objdecl_1(p):
   p[0] = sa.ObjdeclConcrete(p[1], p[2], p[3], p[4], p[5],p[6])
 
 def p_callobj_1(p):
-  '''callobj : ID PONTO ID'''
-    p[0] = sa.CallobjConcrete(p[1], p[2], p[3])
+  '''callobj : ID PONTO ID
+  '''
+  p[0] = sa.CallobjConcrete(p[1], p[2], p[3])
 
 
 def p_funcdecl(p):
@@ -112,16 +112,16 @@ def p_signature3(p):
 
 def p_sigParams1(p):
     '''sigParams : ID'''
-      p[0] = sa.SigParamsConcrete(p[1])
+    p[0] = sa.SigParamsConcrete(p[1])
 
 def p_sigParams2(p):
     '''sigParams : ID , sigParams'''
-      p[0] = sa.SigParamsConcrete(p[1],p[2])
+    p[0] = sa.SigParamsConcrete(p[1],p[2])
 
 
 def p_body(p):
     '''body : stms END '''
-     p[0] = sa.BodyConcrete(p[1], p[2])
+    p[0] = sa.BodyConcrete(p[1], p[2])
 
 
 def p_stms1(p):
@@ -180,11 +180,11 @@ def p_stm11(p):
 
 def p_stm12(p):
     '''stm :  IF LPAREN exp RPAREN THEN body'''
-p[0] = sa.STMConcrete(p[1],p[2], p[3], p[4], p[5], p[6])
+    p[0] = sa.STMConcrete(p[1],p[2], p[3], p[4], p[5], p[6])
 
 def p_stm13(p):
     '''stm : IF LPAREN exp RPAREN body'''
-   p[0] = sa.STMConcrete(p[1],p[2], p[3], p[4], p[5])
+    p[0] = sa.STMConcrete(p[1],p[2], p[3], p[4], p[5])
 
 def p_stm14(p):
     '''stm : RETURN exp '''
