@@ -7,23 +7,11 @@ lexer = lex.lex()
 
 # # Test it out
 data = '''
-    #if (texto1 == texto2)
-    #    puts("Iguais")
-    #    return 1
-    #end
-    #if text1 == text2
-    #  comer("abc",cbb)
-    #end
-
-    if text1 == text2 then
-      comer("asd",sss)
+    while b>=3 do
+      if (text2 == tsxx2) then
+        dormirAmem("amem")
+      end
     end
-
-    if (text2 == tsxx2) then
-      dormirAmem("amem")
-    end
-
-
  '''
 data2 = '''
 int some (int a, int b){ 

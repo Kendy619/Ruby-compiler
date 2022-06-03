@@ -237,9 +237,13 @@ def p_s2_if4_noParen_then(p):
 
 
 
-
+def p_stm_while(p):
+    '''stm : WHILE exp body'''
+    pass
   
-  
+def p_stm_while_do(p):
+    '''stm : WHILE exp DO body'''
+    pass 
 
   
 #def p_stm8(p):
@@ -265,6 +269,150 @@ def p_stm12(p):
 def p_stm13(p):
   '''stm : RETURN exp PONTOVIRGULA'''
   pass 
+
+
+def p_exp1(p):
+    '''exp : exp PLUS exp '''
+    pass
+  
+def p_exp2(p):
+    '''exp : exp MINUS exp '''
+    pass
+  
+def p_exp3(p):
+    '''exp : exp TIMES exp '''
+    pass
+  
+def p_exp4(p):
+    '''exp : exp DIV exp '''
+    pass
+  
+def p_exp5(p):
+    '''exp : exp EXPO exp '''
+    pass
+
+
+
+
+def p_exp6(p):
+    '''exp : exp REST exp '''
+    pass
+
+def p_exp7(p):
+    '''exp : exp DOUBLEEQUAL exp '''
+    pass
+  
+def p_exp8(p):
+    '''exp : exp TRIPLEEQ exp '''
+    pass
+  
+def p_exp9(p):
+    '''exp : exp SMALL exp '''
+    pass
+  
+def p_exp10(p):
+    '''exp : exp BIGGEST exp '''
+    pass
+  
+def p_exp11(p):
+    '''exp : exp DIFF exp '''
+    pass
+  
+def p_exp12(p):
+    '''exp : exp POINTRANGE exp '''
+    pass
+    
+def p_exp13(p):
+    '''exp : exp SMALLEQ exp '''
+    pass
+  
+def p_exp14(p):
+    '''exp : exp BIGGESTEQ exp '''
+    pass
+  
+def p_exp15(p):
+    '''exp : exp BIGGSMALLEQ exp '''
+    pass
+  
+def p_exp16(p):
+    '''exp : exp DOUBLEBAR exp '''
+    pass
+  
+def p_exp17(p):
+    '''exp : exp DOUBLEE exp '''
+    pass
+  
+def p_exp18(p):
+    '''exp : exp EXCLAMATION exp '''
+    pass
+  
+def p_exp19(p):
+    '''exp : exp SIMPLEBAR exp '''
+    pass
+  
+def p_exp20(p):
+    '''exp : exp SIMPLEE exp '''
+    pass
+  
+def p_exp21(p):
+    '''exp : exp CIRCUMFLEX exp '''
+    pass
+  
+def p_exp22(p):
+    '''exp : exp NEGATION exp '''
+    pass
+  
+def p_exp23(p):
+    '''exp : exp LSHIFT exp '''
+    pass
+  
+def p_exp24(p):
+    '''exp : exp RSHIFT exp '''
+    pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def p_exp25(p):
   '''exp : call '''
