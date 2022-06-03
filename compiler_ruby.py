@@ -146,35 +146,3 @@ def t_ID(t):
       t.type = key
       return t
   return t
-
-
-lexer = lex.lex()
-
-lexer.input('''+-\n\*notnome_jogador=>
-           
-            #testandocomentario
-            menino ney
-            "teste de string""teste aspas"
-            'bacco'
-            ***
-            #
-            ;
-            #sada
-            adfd
-            =begin defrefgrtgtrgegergerfgerf
-            frgtgtrgr
-            =end
-          sada;
-            ;
-            
-
-            =begin asgasd =end
-            =end
-            ""
-           ==
-           === ("#aseef",dedefr,121,"sdefdref")
-            ("swdefr")
-            ''')
-
-for tok in lexer:
-  print(f'Chave:{tok.type}\t\t Valor:{tok.value}\t\t Linha:{tok.lineno}\t\t Posicao:{tok.lexpos}')

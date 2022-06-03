@@ -29,7 +29,7 @@ class -> "class" ID funcdecl bodyclass |
 
 
 bodyclass ->  funcdecl "end"
-             | attrdecl "end"
+             | attrdecl 
              | funcdecl bodyclass "end"
              | attrdecl bodyclass "end"
 
@@ -90,7 +90,6 @@ exp -> string |
       exp "**" exp| 
       exp "/" exp |
       exp "%" exp |
-
 #Oper relacional
       exp "==" exp | 
       exp "===" exp|

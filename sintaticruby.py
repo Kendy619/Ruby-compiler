@@ -1,8 +1,8 @@
 import ply.yacc as yacc
-from ExpressionLanguageLex import *
-import SintaxeAbstrata as sa
-import Visitor as vis
-import SemanticVisitor as sv
+from compiler_ruby import *
+# import SintaxeAbstrata as sa
+# import Visitor as vis
+# import SemanticVisitor as sv
 
 
 def p_program1(p):
@@ -29,7 +29,6 @@ def p_program5(p):
   '''program : stm'''
   p[0] = sa.ProgramConcrete(p[1])
 
-
 def p_program6(p):
   '''program : stm program'''
   p[0] = sa.ProgramConcrete(p[1], p[2])
@@ -44,6 +43,11 @@ def p_class_2(p):
   '''class : CLASS ID stms body
   '''
   p[0] = sa.ClassConcrete(p[1], p[2], p[3], p[4])
+
+def p_body(p):
+    '''body : stms END '''
+    p[0] = sa.BodyConcrete(p[1], p[2])
+
 
 def p_bodyclass_1(p): 
   '''bodyclass : funcdecl END
@@ -66,12 +70,12 @@ def p_bodyclass_4(p):
   p[0] = sa.BodyclassConcrete(p[1], p[2],p[3])
 
 def p_attdecl_1(p):
-  '''attdecl : ID EQ objdecl
+  '''attrdecl : ID EQ objdecl
   '''
   p[0] = sa.AttdeclConcrete(p[1], p[2],p[3])
 
 def p_attdecl_2(p):
-  '''attdecl : callobj
+  '''attrdecl : callobj
   '''
   p[0] = sa.AttdeclConcrete(p[1])
 
@@ -108,20 +112,13 @@ def p_signature3(p):
     p[0] = sa.SignatureConcrete(p[1], p[2])
 
 
-
-
 def p_sigParams1(p):
     '''sigParams : ID'''
     p[0] = sa.SigParamsConcrete(p[1])
 
 def p_sigParams2(p):
-    '''sigParams : ID , sigParams'''
+    '''sigParams : ID VIRGULA sigParams'''
     p[0] = sa.SigParamsConcrete(p[1],p[2])
-
-
-def p_body(p):
-    '''body : stms END '''
-    p[0] = sa.BodyConcrete(p[1], p[2])
 
 
 def p_stms1(p):
@@ -167,30 +164,22 @@ def p_stm8(p):
     p[0] = sa.STMConcrete(p[1],p[2],P[3])
 
 def p_stm9(p):
-    '''stm: IF exp THEN body'''
+    '''stm : IF exp THEN body'''
     p[0] = sa.STMConcrete(p[1],p[2],P[3],p[4])
 
 def p_stm10(p):
-    '''stm : exp'''
-    p[0] = sa.STMConcrete(p[1])
-
-def p_stm11(p):
     '''stm : IF LPAREN exp RPAREN body'''
     p[0] = sa.STMConcrete(p[1],p[2], p[3], p[4], p[5])
 
-def p_stm12(p):
+def p_stm11(p):
     '''stm :  IF LPAREN exp RPAREN THEN body'''
     p[0] = sa.STMConcrete(p[1],p[2], p[3], p[4], p[5], p[6])
 
-def p_stm13(p):
-    '''stm : IF LPAREN exp RPAREN body'''
-    p[0] = sa.STMConcrete(p[1],p[2], p[3], p[4], p[5])
-
-def p_stm14(p):
+def p_stm12(p):
     '''stm : RETURN exp '''
     p[0] = sa.STMConcrete(p[1],p[2])
 
-def p_stm15(p):
+def p_stm13(p):
     '''stm : RETURN exp PONTOVIRGULA'''
     p[0] = sa.STMConcrete(p[1],p[2],p[3])
 
@@ -219,8 +208,6 @@ def p_exp6(p):
     '''exp : exp REST exp '''
     p[0] = sa.ExpConcrete(p[1],p[2],p[3])
 
-
-  
 def p_exp7(p):
     '''exp : exp DOUBLEEQUAL exp '''
     p[0] = sa.ExpConcrete(p[1],p[2],p[3])
@@ -257,9 +244,6 @@ def p_exp15(p):
     '''exp : exp BIGGSMALLEQ exp '''
     p[0] = sa.ExpConcrete(p[1],p[2],p[3])
 
-
-
-
 def p_exp16(p):
     '''exp : exp DOUBLEBAR exp '''
     p[0] = sa.ExpConcrete(p[1],p[2],p[3])
@@ -271,9 +255,6 @@ def p_exp17(p):
 def p_exp18(p):
     '''exp : exp EXCLAMATION exp '''
     p[0] = sa.ExpConcrete(p[1],p[2],p[3])
-
-
-  
 
 def p_exp19(p):
     '''exp : exp SIMPLEBAR exp '''
@@ -299,7 +280,6 @@ def p_exp24(p):
     '''exp : exp RSHIFT exp '''
     p[0] = sa.ExpConcrete(p[1],p[2],p[3])
 
-
 def p_exp25(p):
     '''exp : call '''
     p[0] = sa.ExpConcrete(p[1])
@@ -307,16 +287,18 @@ def p_exp25(p):
 def p_exp26(p):
     '''exp : assign '''
     p[0] = sa.ExpConcrete(p[1])
-
+  
 def p_exp27(p):
-    '''exp : NUM '''
+    '''exp : NUMBER '''
     p[0] = sa.ExpConcrete(p[1])
 
 def p_exp28(p):
     '''exp : ID '''
     p[0] = sa.ExpConcrete(p[1])
 
-
+def p_exp29(p):
+    '''exp : STRING '''
+    p[0] = sa.ExpConcrete(p[1])
   
 def p_call1(p):
     '''call : ID LPAREN params RPAREN  '''
@@ -341,6 +323,6 @@ def p_params2(p):
 def p_assign(p):
     '''assign : ID EQ exp '''
     p[0] = sa.AssignConcrete(p[1], p[2], p[3])
-
+   
 def p_error(p):
     print("Syntax error in input!")
