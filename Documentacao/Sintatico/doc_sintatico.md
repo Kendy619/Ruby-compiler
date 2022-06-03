@@ -1,4 +1,13 @@
+<a href="https://github.com/Kendy619/Ruby-compiler/blob/main/GLCRuby.txt" target="_blank">Gramática Completa</a>
 # 1. Condicionais
+### Gramática
+```
+stm -> IF exp body 
+    |  IF exp "then" body 
+    |  IF "(" exp ")" body 
+    |  IF "(" exp ")" "then" body 
+```
+### Exemplo
 ```ruby
 day = 'Sexta'
 
@@ -13,6 +22,12 @@ else # Senão
 # 2. Estruturas de Controle (Repetição)
 
 ## For
+### Gramática
+```
+stm -> FOR ID "in" exp "do" body 
+    |  FOR ID "in" exp body 
+```
+### Exemplo
 ```ruby
 players = ['Bale', 'Kanté', 'Messi', 'Aubameyang', 'Reus', 'Neymar', 'Maradona']
 
@@ -22,6 +37,12 @@ for player in players #para cada elemento na lista faça
 end
 ```
 ## While
+### Gramática
+```
+stm -> WHILE exp body 
+    |  WHILE "(" exp ")" body 
+```
+### Exemplo
 ```ruby
 while players[i] != 'Neymar' #Enquanto elemento diferente de 'Neymar' faça
     if players[i] == 'Messi'
@@ -30,27 +51,17 @@ while players[i] != 'Neymar' #Enquanto elemento diferente de 'Neymar' faça
     i += 1
 end
 ```
-## Loop do
-```ruby
-loop do #Repete até encontrar um break com ou sem condicional
-    if players[i] == 'Reus'
-        puts players[i] + ' the IDOL'
-        break #ponto de parada do loop do
-    end
-    i += 1
-end
-```
 
-## Until
-```ruby
-var = 7
-until var == 11 do #Enquanto for diferente faça
-  puts var * 10
-  var = var + 1
-end
-```
 # 3. Métodos
 ## Assinatura
+### Gramática
+```
+signature -> "def" ID "(" sigParams ")"
+          |  "def" ID  "(" ")" 
+          |  "def" ID 
+          |  "def" ID sigParams
+```
+### Exemplo
 ```ruby
 def comprar()
 
@@ -59,28 +70,28 @@ def comprar
 def comprar(Produto)
 
 def comprar Produto
-
 ```
 ## Chamada
+### Gramática
+```
+call -> ID "(" params ")" 
+     |  ID "(" ")"
+```
+### Exemplo
 ```ruby
 comprar("Nintendo Switch")
 comprar()
 ```
-
-## Exemplo
-```ruby
-def printar texto1, texto2
-    puts('Hello World!', texto1, texto2)
-    if (texto1 == texto2) then
-        puts("Iguais")
-        return 1
-    end
-    return 2;
-end
-
-puts(printar("É melhor", "É melhosr"))
-```
 # 4. Classes
+### Gramática
+```
+class -> "class" ID funcdecl bodyclass 
+      |  "class" ID  stms  bodyclass  
+bodyclass -> funcdecl "end"
+          |  attrdecl "end"
+          |  funcdecl bodyclass 
+```
+### Exemplo
 ```ruby
 class Cachorro #o nome da classe deve iniciar com letra maiúscula
 
@@ -94,3 +105,48 @@ class Cachorro #o nome da classe deve iniciar com letra maiúscula
  
 end
 ```
+# 5. Programa Completo
+### Gramática
+```
+program -> funcdecl  
+        |  funcdecl program 
+        |  class 
+        |  class program 
+        |  stm 
+        |  stm program 
+```
+
+### Exemplo
+```ruby
+day = 'Sexta'
+
+if day == 'Domingo'
+    lunch = 'pizza'
+elsif day == 'Sábado'
+    lunch = 'panqueca'
+else
+    puts "Escolha o que vai querer almoçar hoje"
+    puts "1-panqueca\n2-lanche do bk\n3-feijoada"
+    print "->"
+    lunch = gets.chomp.to_i
+    case lunch
+    when 1
+        lunch = "panqueca"
+    when 2
+        lunch = "lanche do bk"
+    when 3..4
+        lunch = "feijoada"
+    else
+        puts "Opção incorreta"
+    end
+
+end
+
+#se dia não é sábado == (if not)
+unless day == 'Sábado'
+    puts "Hoje não é Sábado, na real hoje é #{day}"
+end
+
+puts "Hoje meu almoço vai ser -> #{lunch}"
+```
+<a href="https://github.com/Kendy619/Ruby-compiler/blob/main/GLCRuby.txt" target="_blank">Gramática Completa</a>
