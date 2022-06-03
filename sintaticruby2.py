@@ -8,6 +8,14 @@ def p_program1(p):
 def p_program2(p):
   '''program : funcdecl program'''
 
+#def p_program3(p):
+#  '''program : class'''
+#  pass
+
+#def p_program4(p):
+#  '''program : class program'''
+#  pass
+
 def p_program5(p):
   '''program : stm'''
   pass
@@ -19,6 +27,65 @@ def p_program6(p):
 def p_program7(p):
   '''program : call'''  
   pass
+
+
+
+
+
+
+
+
+
+  
+#def p_class_1(p): 
+#  '''class : CLASS ID  END
+#  '''
+#  pass
+
+
+
+#def p_class_1(p): 
+#  '''class : CLASS ID funcdecl body
+#  '''
+#  pass
+
+#def p_class_2(p): 
+#  '''class : CLASS ID stms body
+#  '''
+#  pass
+
+#def p_bodyclass_1(p): 
+#  '''bodyclass : funcdecl END
+#  '''
+#  pass
+
+#def p_bodyclass_2(p): 
+#  '''bodyclass : attrdecl END
+#  '''
+#  pass
+
+#def p_bodyclass_3(p): 
+#  '''bodyclass : funcdecl bodyclass END
+#  '''
+#  pass
+
+#def p_bodyclass_4(p): 
+#  '''bodyclass : attrdecl bodyclass END
+#  '''
+#  pass
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def p_funcdecl(p):
   '''funcdecl : signature body'''
@@ -241,9 +308,27 @@ def p_stm_while(p):
     '''stm : WHILE exp body'''
     pass
   
+def p_stm_while_paren(p):
+    '''stm : WHILE LPAREN exp RPAREN body'''
+    pass
+  
 def p_stm_while_do(p):
     '''stm : WHILE exp DO body'''
     pass 
+
+def p_stm_while_do_paren(p):
+  '''stm : WHILE LPAREN exp RPAREN DO body'''
+  pass
+
+def p_stm_for(p):
+  '''stm : FOR ID IN ID body'''
+  pass
+
+def p_stm_for_do(p):
+  '''stm : FOR ID IN ID DO body'''
+  pass
+
+
 
   
 #def p_stm8(p):
@@ -262,11 +347,11 @@ def p_stm_while_do(p):
 ##  '''stm :  IF LPAREN exp RPAREN THEN body'''
 #  #pass
 
-def p_stm12(p):
+def p_stm_return(p):
   '''stm : RETURN exp '''
   pass
 
-def p_stm13(p):
+def p_stm_return_pontoVirgula(p):
   '''stm : RETURN exp PONTOVIRGULA'''
   pass 
 
@@ -460,4 +545,4 @@ def p_params2(p):
     pass
 
 def p_error(p):
-  print("Syntax error in input!")
+  print("==============Syntax error in input!==============")
